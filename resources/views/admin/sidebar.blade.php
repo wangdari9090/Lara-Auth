@@ -1,5 +1,5 @@
 <!-- Sidebar Offcanvas -->
-    <div class="offcanvas-lg offcanvas-start bg-light" tabindex="-1" id="sidebar">
+    <div class="offcanvas-lg offcanvas-start bg-light" tabindex="-1" id="sidebar" style="top: 56px; height: calc(100% - 56px);">
         <div class="offcanvas-header d-lg-none">
             <h5 class="offcanvas-title">Menu</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
@@ -29,8 +29,3 @@
             </ul>
         </div>
     </div>
-
-    <!-- Toggle button for small screens -->
-    <button class="btn btn-success m-2 d-lg-none position-fixed" style="top: 60px; left: 10px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
-        <i class="bi bi-list"></i>
-    </button>

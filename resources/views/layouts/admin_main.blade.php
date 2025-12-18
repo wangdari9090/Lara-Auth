@@ -12,15 +12,23 @@
 <body>
 
 <!-- Navbar -->
+<!-- Navbar -->
 <nav class="navbar navbar-dark bg-success fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid d-flex align-items-center">
+        <!-- Toggle button for small screens -->
+        <button class="btn btn-outline-light d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+            <i class="bi bi-list"></i>
+        </button>
+
         <span class="navbar-brand mb-0 h1">Admin Panel</span>
-        <form method="POST" action="{{ route('logout') }}">
+
+        <form class="ms-auto" method="POST" action="{{ route('logout') }}">
             @csrf
             <button class="btn btn-outline-light btn-sm">Logout</button>
         </form>
     </div>
 </nav>
+
 
 <!-- Sidebar -->
 <div class="d-flex">
