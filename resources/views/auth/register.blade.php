@@ -16,6 +16,14 @@
             <!-- Login Form -->
             <form action="{{ route('register') }}" method="POST">
                 @csrf
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" autofocus>
+                    @error('name')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <!-- Email -->
                 <div class="mb-3">
@@ -28,7 +36,7 @@
 
                 <!-- Password -->
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                <label for="passwor" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password">
                     @error('password')
                         <span class="invalid-feedback">{{ $message }}</span>
