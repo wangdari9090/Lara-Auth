@@ -38,26 +38,29 @@ class AuthController extends Controller
     return redirect()->route('home');
     }
     public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
-            $request->session()->regenerate();
+    if (Auth::attempt($credentials, $request->filled('remember'))) {
+        $request->session()->regenerate();
 
-            return redirect()->route(
+        // Redirect based on role
+        return redirect()->route(
             auth()->user()->role === 'admin'
                 ? 'admin.dashboard'
                 : 'home'
         );
-
-            return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-            ])->onlyInput('email');
-        }
     }
+
+    // If login fails
+    return back()->withErrors([
+        'email' => 'The provided credentials do not match our records.',
+    ])->onlyInput('email');
+}
+
 
     public function index()
     {
@@ -77,6 +80,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('show.login');
+        return redirect()->back();
     }
 }

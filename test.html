@@ -1,216 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="Description" content="This is a weather dashboard" />
-        <title>Weather Dashboard</title>
+        <title>@yield('title', 'Admin Panel')</title>
+
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
         <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         />
-        <link rel="stylesheet" href="Assets/css/reset.css" />
-        <link rel="stylesheet" href="Assets/css/style.css" />
-        <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-            integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-            crossorigin="anonymous"
-        />
+
+        <style>
+            /* Sidebar width matches offcanvas --bs-offcanvas-width */
+            .ms-220 {
+                margin-left: 220px !important;
+                transition: margin-left 0.3s ease;
+            }
+        </style>
     </head>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            height: 100%;
-        }
-
-        body {
-            min-height: 100%;
-            line-height: 1;
-            font-family: sans-serif;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-size: 100%;
-        }
-
-        input,
-        select,
-        option,
-        optgroup,
-        textarea,
-        button,
-        pre,
-        code {
-            font-size: 100%;
-            font-family: inherit;
-        }
-
-        ol,
-        ul {
-            list-style: none;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            height: 100%;
-        }
-
-        body {
-            min-height: 100%;
-            line-height: 1;
-            font-family: sans-serif;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-size: 100%;
-        }
-
-        input,
-        select,
-        option,
-        optgroup,
-        textarea,
-        button,
-        pre,
-        code {
-            font-size: 100%;
-            font-family: inherit;
-        }
-
-        ol,
-        ul {
-            list-style: none;
-        }
-    </style>
     <body>
-        <nav class="navbar navbar-light bg-light fixed-top">
-            <div class="container-fluid">
-                <a class="text-info navbar-brand" href="index.html"
-                    >Weather Dashboard<i class="fas fa-sun"></i
-                ></a>
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark bg-success fixed-top">
+            <div class="container-fluid d-flex align-items-center">
+                <button
+                    class="btn btn-outline-light me-2"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#sidebar"
+                    aria-controls="sidebar"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <span class="navbar-brand mb-0 h1">Admin Panel</span>
+
+                <form
+                    class="ms-auto"
+                    method="POST"
+                    action="{{ route('logout') }}"
+                >
+                    @csrf
+                    <button class="btn btn-outline-light btn-sm">Logout</button>
+                </form>
             </div>
         </nav>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="sidebar bg-light hide">
-                    <!-- Side bar. Added hide class for media query in CSS -->
-                    <ul class="nav nav-sidebar">
-                        <div class="history-list list-group">
-                            <br />
-                            <p class="text-center">HISTORY</p>
-                            <!-- This is where the history will be appended -->
-                        </div>
-                        <!-- This is where the clear button will be appended -->
-                        <div class="clear-btn-location list-group"></div>
-                    </ul>
-                </div>
-                <div class="col-sm-12 main">
-                    <!-- Main page -->
-                    <br /><br /><br /><br />
-                    <form class="d-flex">
-                        <input
-                            class="inputForm form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                        <button class="searchBtn btn btn-light" type="submit">
-                            Search
-                        </button>
-                    </form>
-                    <br />
-                    <div>
-                        <p class="welcomeText h2 text-center text-info">
-                            Welcome to Weather Dashboard!
-                        </p>
-                        <p class="welcomeText h2 text-center text-info">
-                            Search a city to get started.
-                        </p>
-                    </div>
-                    <div class="card w-100 h-80 text-center">
-                        <!-- Main card for general city and weather info -->
-                        <div class="card-body">
-                            <h3 class="text-info card-text card-title">
-                                <span class="citySpan"></span
-                                ><i class="fas fa-map-marker-alt fa-sm"></i
-                                ><span class="dateSpan"></span>
-                            </h3>
-                            <p class="card-text">
-                                Temperature:<span class="tempSpan"></span
-                                >degrees F<i
-                                    class="fas fa-thermometer-quarter fa-lg"
-                                ></i>
-                            </p>
-                            <p class="card-text">
-                                Humidity:<span class="humiditySpan"></span>%
-                            </p>
-                            <p class="card-text">
-                                Wind Speed:<span class="windSpan"></span>miles /
-                                hour
-                            </p>
-                        </div>
-                    </div>
-                    <br />
-                </div>
-            </div>
-            <div class="containerBlock">
-                <!-- 5 day forecast -->
-                <div class="main">
-                    <p class="day1">Date</p>
-                    <img class="day1Icon" alt="Weather icon" />
-                    <br /><br />
-                    <p class="day1Temp">Temp</p>
-                </div>
-                <div>
-                    <p class="day2">Date</p>
-                    <img class="day2Icon" alt="Weather icon" />
-                    <br /><br />
-                    <p class="day2Temp">Temp</p>
-                </div>
-                <div>
-                    <p class="day3">Date</p>
-                    <img class="day3Icon" alt="Weather icon" />
-                    <br /><br />
-                    <p class="day3Temp">Temp</p>
-                </div>
-                <div>
-                    <p class="day4">Date</p>
-                    <img class="day4Icon" alt="Weather icon" />
-                    <br /><br />
-                    <p class="day4Temp">Temp</p>
-                </div>
-                <div>
-                    <p class="day5">Date</p>
-                    <img class="day5Icon" alt="Weather icon" />
-                    <br /><br />
-                    <p class="day5Temp">Temp</p>
-                </div>
+
+        <!-- Sidebar Offcanvas -->
+        <div
+            class="offcanvas offcanvas-start bg-light"
+            tabindex="-1"
+            id="sidebar"
+            style="
+                top: 56px;
+                height: calc(100% - 56px);
+                --bs-offcanvas-width: 220px;
+            "
+        >
+            <div class="offcanvas-body p-2">
+                <ul class="nav flex-column gap-2">
+                    <li class="nav-item">
+                        <a
+                            href="{{ route('admin.dashboard') }}"
+                            class="nav-link d-flex align-items-center rounded px-3 py-2 text-secondary"
+                        >
+                            <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="{{ route('admin.student') }}"
+                            class="nav-link d-flex align-items-center rounded px-3 py-2 text-secondary"
+                        >
+                            <i class="bi bi-people me-2"></i> Students
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="#"
+                            class="nav-link d-flex align-items-center rounded px-3 py-2 text-secondary"
+                        >
+                            <i class="bi bi-journal-bookmark me-2"></i> Courses
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="#"
+                            class="nav-link d-flex align-items-center rounded px-3 py-2 text-secondary"
+                        >
+                            <i class="bi bi-gear me-2"></i> Settings
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="Assets/js/script.js"></script>
+
+        <!-- Main content -->
+        <div class="container-fluid" style="margin-top: 56px">
+            <div class="row">
+                <main
+                    id="main-content"
+                    class="col px-md-4 d-flex justify-content-center"
+                >
+                    <div class="w-100" style="max-width: 1200px">
+                        @yield('dashboard') @yield('student')
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            const sidebarEl = document.getElementById("sidebar");
+            const mainContent = document.getElementById("main-content");
+
+            // Disable backdrop and allow scroll
+            const bsOffcanvas = new bootstrap.Offcanvas(sidebarEl, {
+                backdrop: false,
+                scroll: true,
+            });
+
+            // Add margin to content when sidebar is open
+            sidebarEl.addEventListener("show.bs.offcanvas", function () {
+                mainContent.classList.add("ms-220");
+            });
+
+            sidebarEl.addEventListener("hidden.bs.offcanvas", function () {
+                mainContent.classList.remove("ms-220");
+            });
+        </script>
     </body>
 </html>
