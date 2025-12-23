@@ -8,45 +8,41 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="cdn.jsdelivr.net">
+
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/student.css') }}">
 </head>
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-dark bg-success fixed-top">
+<nav class="navbar navbar-dark fixed-top border-bottom">
     <div class="container-fluid d-flex align-items-center">
-        <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+        <button id="toggle-btn" class="btn btn-outline-ligborder-bottom " type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" style="color:#99CC00; font-size:1.5rem;">
             <i class="bi bi-list"></i>
         </button>
 
-        <span class="navbar-brand mb-0 h1">Admin Panel</span>
+        <span class="navbar-brand fs-4 fw-bold" style="color: #99CC00;">Admin Panel</span>
 
         <form class="ms-auto" method="POST" action="{{ route('logout') }}">
             @csrf
-            <button class="btn btn-outline-light btn-sm">Logout</button>
+            <button class="btn btn-sm me-5 logout-btn" style="font-size:1rem; color: #99CC00;">Logout</button>
         </form>
     </div>
 </nav>
 
-<div class="d-flex">
     @include('admin.sidebar')
 
     <!-- Main content -->
-   <div class="container-fluid" style="margin-top:56px;">
-    <div class="row">
-        <main id="main-content" class="col-lg-12 px-md-4 d-flex justify-content-center">
-            <div class="w-100" >
-                @yield('dashboard') 
-                @yield('student_index') 
-                @yield('show_student')
-                @yield('create_student')
-                @yield('edit_student')
-                
-            </div>
-        </main>
-    </div>
-</div>
-
+   <div style="margin-top: 58px; flex: 1;">
+    <main id="main-content" class="px-3">
+        @yield('dashboard') 
+        @yield('student_index') 
+        @yield('show_student')
+        @yield('create_student')
+        @yield('edit_student')
+    </main>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

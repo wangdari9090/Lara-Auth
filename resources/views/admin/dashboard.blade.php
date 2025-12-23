@@ -5,7 +5,7 @@
 @section('dashboard')
 
 
-<div class="row">
+<div class="row m-4">
     <div class="col align-self-center">
         
 <div class="mb-4">

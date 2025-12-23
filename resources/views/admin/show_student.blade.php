@@ -70,8 +70,8 @@
                     </td>
                     <td>
                         <div class="d-flex gap-1">
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button class="btn btn-sm btn-primary">Test</button>
+                            <button class="btn btn-sm btn-danger">view</button>
                         </div>
                     </td>
                 </tr>
