@@ -1,5 +1,6 @@
 <div class="offcanvas offcanvas-start mt-2 sidebar"
-     tabindex="-1" id="sidebar"
+     tabindex="-1" id="sidebar" data-bs-backdrop="false"
+     data-bs-scroll="true" 
     style="top:58px; height:calc(100% - 58px); --bs-offcanvas-width:220px; z-index: 1030;">
     <div class="offcanvas-body">
         <ul class="nav flex-column gap-2">

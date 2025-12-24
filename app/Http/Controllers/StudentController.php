@@ -102,7 +102,7 @@ class StudentController extends Controller
     }
     public function export()
 {
-    return Excel::download(new StudentsExport, 'students.xlsx');
+    // return Excel::download(new StudentsExport, 'students.xlsx');
 }
 
 }

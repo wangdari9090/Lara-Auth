@@ -1,0 +1,104 @@
+:root {
+    --accent: #9acd32;
+    --text-dark: #555;
+    --border: #999;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+}
+
+.form-group i {
+    position: absolute;
+    left: 0;
+    top: 32px;
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.form-control {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 6px 6px 6px 30px;
+    outline: none;
+    font-size: 14px;
+    border-radius: 0%;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom-color: var(--accent);
+    border-bottom: 2px solid #9acd32;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 0;
+    top: 32px;
+    color: #000;
+    pointer-events: none;
+}
+
+.row.form-group {
+    align-items: flex-start;
+    padding: 0 15px 10px 20px;
+    /* padding-bottom: 10px; */
+}
+
+/* Icon styling */
+.input-icon {
+    font-size: 26px;
+    color: var(--accent);
+    margin-top: 6px;
+}
+
+.custom-floating {
+    position: relative;
+}
+
+.custom-floating > .form-control {
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+.custom-floating > .form-control:focus {
+    border-bottom: 2px solid var(--accent);
+    box-shadow: none;
+    outline: none;
+}
+
+.custom-floating > label {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-size: 12px;
+    color: #777;
+    letter-spacing: 1px;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+/* Select border color */
+.form-select {
+    border: 1px solid #9acd32;
+    color: #333; /* default text color */
+}
+
+/* Focus border color */
+.form-select:focus {
+    border-color: #9acd32;
+    box-shadow: 0 0 0 0.2rem rgba(154, 205, 50, 0.25);
+}
+
+/* Dropdown options color */
+.form-select option {
+    color: #9acd32; /* text color */
+    background-color: #fff; /* option background */
+}

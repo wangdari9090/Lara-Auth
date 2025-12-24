@@ -31,8 +31,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('students', StudentController::class);
-
-    // Import and Export routes
     Route::post('students/import', [StudentController::class, 'import'])->name('students.import');
     Route::get('students/export', [StudentController::class, 'export'])->name('students.export');
 });

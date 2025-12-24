@@ -1,9 +1,9 @@
 @extends('layouts.admin_main')
 
-@section('student_index')
+@section('students.index')
 <div class="m-4 my-3" style="overflow-x: auto;">
      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-    <h3 class="ms-3">Students</h3>
+    <h3 class="ms-3 text-muted">All Students</h3>
 
     <div class="d-flex flex-wrap gap-2 align-items-center me-4">
         <!-- Import Form -->
