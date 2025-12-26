@@ -2,7 +2,7 @@
 
 @section('title', 'Student Dashboard')
 
-@section('student_index')
+@section('content')
 <div class="container-fluid mt-4 pb-5">
 
     <div class="mx-auto col-12 col-lg-11 col-xl-10">
@@ -27,31 +27,91 @@
         </div>
 
         <div class="card border-0 shadow-sm rounded-4 mb-4">
-            <div class="card-body p-3">
-                <div class="row g-2">
-                    <div class="col-md-5">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
-                            <input type="text" class="form-control border-start-0" placeholder="Search by name or email...">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select form-select-sm">
-                            <option value="">Filter by Role</option>
-                            <option value="admin">Admin</option>
-                            <option value="student">Student</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-select form-select-sm">
-                            <option value="">Status: All</option>
-                            <option value="active">Active Only</option>
-                            <option value="inactive">Inactive Only</option>
-                        </select>
-                    </div>
+    <div class="card-body p-3">
+        <div class="row g-2 justify-content-lg-end align-items-center">
+            
+            <div class="col-12 col-md-4">
+                <div class="filter-control-group d-flex align-items-center px-3 bg-white border rounded-pill" style="height: 40px;">
+                    <i class="bi bi-search me-2 text-muted"></i>
+                    <input type="text" 
+                           class="filter-control-input flex-grow-1 border-0 shadow-none bg-transparent" 
+                           placeholder="Search students..." 
+                           style="outline: none; font-size: 14px;">
                 </div>
             </div>
+
+            <div class="col-6 col-md-3 col-lg-2">
+    <div class="dropdown h-100">
+        <button class="filter-control-group d-flex align-items-center px-3 bg-white border rounded-pill w-100 shadow-none" 
+                type="button" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false" 
+                style="height: 40px; font-size: 14px; color: #444; border-color: #dee2e6 !important;">
+            <span class="flex-grow-1 text-start">Filter By User</span>
+            <i class="bi bi-chevron-down small text-muted ms-1"></i>
+        </button>
+
+        <ul class="dropdown-menu shadow-sm border-0 rounded-4 mt-2 p-2" style="min-width: 100%; font-size: 14px;">
+            <li>
+                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
+                    <i class="bi bi-circle-fill me-2 small text-muted"></i> All Roles
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
+                    <i class="bi bi-shield-lock me-2 small text-muted"></i> Admin
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
+                    <i class="bi bi-mortarboard me-2 small text-muted"></i> Student
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-6 col-md-3 col-lg-2">
+    <div class="dropdown h-100">
+        <button class="filter-control-group d-flex align-items-center px-3 bg-white border rounded-pill w-100 shadow-none" 
+                type="button" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false" 
+                style="height: 40px; font-size: 14px; color: #444; border-color: #dee2e6 !important;">
+            <span class="flex-grow-1 text-start"> Sort By Status</span>
+            <i class="bi bi-chevron-down small text-muted ms-1"></i>
+        </button>
+
+        <ul class="dropdown-menu shadow-sm border-0 rounded-4 mt-2 p-2" style="min-width: 100%; font-size: 14px;">
+            <li>
+                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
+                    <i class="bi bi-circle-fill me-2 small text-muted"></i> All Roles
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
+                    <i class="bi bi-shield-lock me-2 small text-muted"></i> Admin
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
+                    <i class="bi bi-mortarboard me-2 small text-muted"></i> Student
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            {{-- <div class="col-6 col-md-3 col-lg-2">
+                <button class="btn btn-sm rounded-pill w-100 fw-bold shadow-sm py-2 text-white" 
+                        style="background-color: var(--accent); height: 40px; border: none;">
+                    <i class="bi bi-filter me-1"></i> Filter
+                </button>
+            </div> --}}
+            
         </div>
+    </div>
+</div>
 
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
             <div class="table-responsive">
@@ -68,31 +128,54 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for ($i = 1; $i <= 10; $i++)
-                        <tr>
-                            <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
-                            <td class="text-muted small">{{ $i }}</td>
-                            <td>
-                                <span class="fw-semibold text-dark">Student {{ $i }}</span>
-                            </td>
-                            <td class="text-muted small">student{{ $i }}@school.edu</td>
-                            <td><span class="small">{{ $i % 2 == 0 ? 'Admin' : 'Student' }}</span></td>
-                            <td>
-                                @if($i % 2 == 0)
-                                    <span class="badge rounded-pill bg-success-subtle text-success px-3">Active</span>
-                                @else
-                                    <span class="badge rounded-pill bg-secondary-subtle text-secondary px-3">Inactive</span>
-                                @endif
-                            </td>
-                            <td class="text-end pe-4">
-                                <div class="btn-group shadow-sm rounded-pill overflow-hidden">
-                                    <button class="btn btn-sm btn-white border-end" title="Edit"><i class="bi bi-pencil text-primary"></i></button>
-                                    <button class="btn btn-sm btn-white text-danger" title="Delete"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        @endfor
-                    </tbody>
+    @forelse ($students as $student)
+    <tr>
+        <td class="ps-4">
+            <input type="checkbox" name="selected[]" value="{{ $student->id }}" class="form-check-input">
+        </td>
+        <td class="text-muted small">
+            {{ ($students->currentPage() - 1) * $students->perPage() + $loop->iteration }}
+        </td>
+        <td>
+            <span class="fw-semibold text-dark">{{ $student->student_name }}</span>
+        </td>
+        <td class="text-muted small">
+            {{ $student->student_code }}
+        </td>
+        <td>
+            <span class="small">{{ $student->course }}</span>
+        </td>
+        <td>
+            @if(strtolower($student->status) == 'active')
+                <span class="badge rounded-pill bg-success-subtle text-success px-3">Active</span>
+            @else
+                <span class="badge rounded-pill bg-secondary-subtle text-secondary px-3">Inactive</span>
+            @endif
+        </td>
+        <td class="text-end pe-4">
+            <div class="btn-group shadow-sm rounded-pill overflow-hidden">
+                <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-white border-end" title="Edit">
+                    <i class="bi bi-pencil text-primary"></i>
+                </a>
+                
+                <form action="{{ route('students.destroy', $student->id) }}" method="POST" onsubmit="return confirm('Are you sure?')" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-white text-danger" title="Delete">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    @empty
+    <tr>
+        <td colspan="7" class="text-center py-4 text-muted">
+            No students found in the database.
+        </td>
+    </tr>
+    @endforelse
+</tbody>
                 </table>
             </div>
         </div>

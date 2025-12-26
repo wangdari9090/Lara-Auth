@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-.form-control {
+.form-control > .create-form {
     width: 100%;
     border: none;
     border-bottom: 1px solid var(--border);
@@ -37,7 +37,7 @@
     background: transparent;
 }
 
-.form-control:focus {
+.create-form:focus {
     box-shadow: none;
     border-bottom: 2px solid var(--accent);
 }
@@ -55,44 +55,4 @@
 .align-items-center {
     align-items: flex-end !important; /* This aligns icons with the input line */
     padding-bottom: 5px;
-}
-:root {
-    --accent: #99cc00;
-}
-
-/* Custom Table Theme */
-.student-table .theme-header {
-    background-color: #f8fbf0; /* Very light tint of your green */
-    border-bottom: 2px solid var(--accent);
-}
-
-.student-table thead th {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #555;
-    font-weight: 700;
-}
-
-/* Striped Row Color */
-.table-striped > tbody > tr:nth-of-type(odd) > * {
-    --bs-table-accent-bg: rgba(153, 204, 0, 0.03); /* Subtle green tint */
-}
-
-/* Badge colors matching the theme */
-.bg-success-subtle {
-    background-color: rgba(153, 204, 0, 0.15) !important;
-}
-.text-success {
-    color: #6b8e00 !important; /* Darker green for readability */
-}
-
-/* Card Styling */
-.rounded-4 {
-    border-radius: 1rem !important;
-}
-
-/* Smooth Table Row Hover */
-.student-table tbody tr {
-    transition: background 0.2s ease;
 }

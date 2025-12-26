@@ -46,12 +46,12 @@
                 <div class="collapse" id="coursesDropdown">
                     <ul class="nav flex-column ms-3 mt-1 sidebar-submenu">
                         <li class="nav-item">
-                            <a href="{{ route('students.index') }}" class="nav-link px-3 py-2">
+                            <a href="{{ route('courses.index') }}" class="nav-link px-3 py-2">
                                 All Courses
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('students.create') }}" class="nav-link px-3 py-2">
+                            <a href="{{ route('courses.create') }}" class="nav-link px-3 py-2">
                                 Add New Courses
                             </a>
                         </li>
@@ -59,27 +59,11 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center rounded px-3 py-2 sidebar-link"
-                data-bs-toggle="collapse" href="#settingsDropdown" role="button"
-                aria-expanded="false" aria-controls="settingsDropdown">
-                    <i class="bi bi-gear me-2"></i> <span class="sidebar-text">Setting</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link d-flex align-items-center rounded px-3 py-2 sidebar-link" 
+                href="{{ route('users.index') }}">
+                    <i class="bi bi-person-circle me-2"></i> 
+                    <span class="sidebar-text">Users</span>
                 </a>
-
-                <div class="collapse" id="settingsDropdown">
-                    <ul class="nav flex-column ms-3 mt-1 sidebar-submenu">
-                        <li class="nav-item">
-                            <a href="{{ route('students.index') }}" class="nav-link px-3 py-2">
-                                All Students
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('students.create') }}" class="nav-link px-3 py-2">
-                                Add New Student
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
 
         </ul>

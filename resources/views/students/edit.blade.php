@@ -1,6 +1,6 @@
 @extends('layouts.admin_main')
 
-@section('edit_student')
+@section('content')
 <div class="container">
     <h2 class="my-4">Edit Student</h2>
 

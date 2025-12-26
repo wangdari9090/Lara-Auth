@@ -1,6 +1,6 @@
 @extends('layouts.admin_main')
 
-@section('dashboard')
+@section('content')
 <div class="container-fluid p-4" style="background-color: #f4f7f6; min-height: 100vh;">
     
     <div class="mx-auto col-12 col-lg-11 col-xl-10">

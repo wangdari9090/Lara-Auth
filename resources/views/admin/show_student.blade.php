@@ -2,7 +2,7 @@
 
 @section('title', 'Student Dashboard')
 
-@section('show_student')
+@section('content')
 <div class="container-fluid mt-4">
 
     <!-- Header: Actions & Filters -->
@@ -82,7 +82,6 @@
 
     <!-- Pagination -->
     <div class="d-flex justify-content-between align-items-center mt-3">
-        <span class="text-muted">Showing 1 to 50 of 200 entries</span>
         <nav>
             <ul class="pagination mb-0">
                 <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>

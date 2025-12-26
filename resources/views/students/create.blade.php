@@ -1,6 +1,6 @@
 @extends('layouts.admin_main')
 
-@section('create_student')
+@section('content')
 <div class="container mt-4">
     <div class="mx-auto" style="max-width: 450px;">
         
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col">
                         <div class="form-floating custom-floating">
-                            <input type="text" class="form-control" id="student_code" placeholder=" ">
+                            <input type="text" class="form-control create-form create-form" id="student_code" placeholder=" ">
                             <label for="student_code">STUDENT CODE</label>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col">
                         <div class="form-floating custom-floating">
-                            <input type="text" class="form-control" id="student_name" placeholder=" ">
+                            <input type="text" class="form-control create-form" id="student_name" placeholder=" ">
                             <label for="student_name">STUDENT NAME</label>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="col">
                         <div class="form-floating custom-floating">
-                            <input type="text" class="form-control" id="course" placeholder=" ">
+                            <input type="text" class="form-control create-form" id="course" placeholder=" ">
                             <label for="course">COURSE</label>
                         </div>
                     </div>

@@ -39,10 +39,7 @@
     <!-- Main content -->
    <div style="margin-top: 58px; flex: 1;">
     <main id="main-content" class="px-3">
-        @yield('dashboard') 
-        @yield('student_index') 
-        @yield('create_student')
-        @yield('edit_student')
+        @yield('content')
     </main>
 </div>
         <script>

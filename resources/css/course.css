@@ -1,0 +1,117 @@
+.pagination .page-link {
+    color: var(--accent);
+    border: 1px solid #dee2e6;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: #f8f9fa;
+    color: var(--accent);
+    border-color: #dee2e6;
+}
+
+.pagination .page-item:first-child .page-link {
+    border-radius: 20px 0 0 20px;
+}
+
+.pagination .page-item:last-child .page-link {
+    border-radius: 0 20px 20px 0;
+}
+
+.pill-input-group,
+.custom-pill-height {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.pill-input-group i,
+.custom-pill-height i,
+.btn.rounded-pill i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    margin: 0;
+}
+
+.pill-input-group input,
+.custom-pill-height input {
+    height: 100%;
+    line-height: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+}
+
+.btn.rounded-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.btn-group .btn:focus,
+.btn-group .btn:active,
+.btn-group button:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.btn-group .btn:active i {
+    transform: scale(0.9);
+}
+
+.sms-create-group {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.sms-create-group:focus-within {
+    border-bottom-color: var(--accent);
+}
+
+.sms-create-group i {
+    color: #adb5bd;
+    margin-right: 15px;
+    font-size: 1.1rem;
+}
+
+.create-form-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    font-size: 15px;
+    color: #444;
+}
+
+.form-check-input:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+.form-check-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.25rem rgba(144, 196, 61, 0.25);
+}
+
+.extra-small {
+    font-size: 11px;
+}

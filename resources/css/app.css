@@ -3,7 +3,8 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-/* Your own CSS */
 @import "./admin.css";
+@import "./course.css";
 @import "./student.css";
 @import "./navbar.css";
+@import "./pagination.css";

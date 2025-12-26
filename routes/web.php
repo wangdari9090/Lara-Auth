@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 
 // Route::get('/', function () {
@@ -30,7 +32,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::resource('users', UserController::class);
     Route::resource('students', StudentController::class);
+    Route::resource('courses', CourseController::class);
     Route::post('students/import', [StudentController::class, 'import'])->name('students.import');
     Route::get('students/export', [StudentController::class, 'export'])->name('students.export');
 });
