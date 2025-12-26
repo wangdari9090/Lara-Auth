@@ -4,101 +4,95 @@
     --border: #999;
 }
 
+/* Ensure rows take full width */
+.row {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .form-group {
     position: relative;
+    display: flex;
+    width: 100%;
 }
 
-.form-group label {
-    font-size: 12px;
-    color: var(--text-dark);
-    letter-spacing: 1px;
-}
-
-.form-group i {
-    position: absolute;
-    left: 0;
-    top: 32px;
+/* Fix icon alignment */
+.form-group i,
+.bi-building {
     color: var(--accent);
     font-size: 18px;
+    display: flex;
+    align-items: center;
 }
 
 .form-control {
     width: 100%;
     border: none;
     border-bottom: 1px solid var(--border);
-    padding: 6px 6px 6px 30px;
+    padding: 6px 0;
     outline: none;
     font-size: 14px;
-    border-radius: 0%;
+    border-radius: 0;
+    background: transparent;
 }
 
 .form-control:focus {
-    outline: none;
     box-shadow: none;
-    border-bottom-color: var(--accent);
-    border-bottom: 2px solid #9acd32;
-}
-
-.select-arrow {
-    position: absolute;
-    right: 0;
-    top: 32px;
-    color: #000;
-    pointer-events: none;
-}
-
-.row.form-group {
-    align-items: flex-start;
-    padding: 0 15px 10px 20px;
-    /* padding-bottom: 10px; */
-}
-
-/* Icon styling */
-.input-icon {
-    font-size: 26px;
-    color: var(--accent);
-    margin-top: 6px;
+    border-bottom: 2px solid var(--accent);
 }
 
 .custom-floating {
     position: relative;
+    width: 100%;
 }
 
-.custom-floating > .form-control {
-    border: none;
-    border-bottom: 1px solid #999;
-}
-
-.custom-floating > .form-control:focus {
-    border-bottom: 2px solid var(--accent);
-    box-shadow: none;
-    outline: none;
-}
-
-.custom-floating > label {
-    position: absolute;
-    left: 0;
-    top: 14px;
-    font-size: 12px;
-    color: #777;
-    letter-spacing: 1px;
-    pointer-events: none;
-    transition: all 0.5s ease;
-}
-/* Select border color */
 .form-select {
-    border: 1px solid #9acd32;
-    color: #333; /* default text color */
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 10px;
+}
+.align-items-center {
+    align-items: flex-end !important; /* This aligns icons with the input line */
+    padding-bottom: 5px;
+}
+:root {
+    --accent: #99cc00;
 }
 
-/* Focus border color */
-.form-select:focus {
-    border-color: #9acd32;
-    box-shadow: 0 0 0 0.2rem rgba(154, 205, 50, 0.25);
+/* Custom Table Theme */
+.student-table .theme-header {
+    background-color: #f8fbf0; /* Very light tint of your green */
+    border-bottom: 2px solid var(--accent);
 }
 
-/* Dropdown options color */
-.form-select option {
-    color: #9acd32; /* text color */
-    background-color: #fff; /* option background */
+.student-table thead th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #555;
+    font-weight: 700;
+}
+
+/* Striped Row Color */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: rgba(153, 204, 0, 0.03); /* Subtle green tint */
+}
+
+/* Badge colors matching the theme */
+.bg-success-subtle {
+    background-color: rgba(153, 204, 0, 0.15) !important;
+}
+.text-success {
+    color: #6b8e00 !important; /* Darker green for readability */
+}
+
+/* Card Styling */
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+/* Smooth Table Row Hover */
+.student-table tbody tr {
+    transition: background 0.2s ease;
 }

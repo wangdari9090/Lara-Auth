@@ -5,7 +5,7 @@ body {
 /* Main sidebar links */
 .sidebar-link {
     font-weight: 500;
-    color:black;
+    color: black;
     background: none;
     border-radius: 5%;
 }
@@ -18,7 +18,7 @@ body {
 /* Submenu container */
 .sidebar-submenu {
     font-weight: 500;
-    color:black;
+    color: black;
     background: none;
     border-radius: 5%;
 }
@@ -32,7 +32,7 @@ body {
 }
 
 .sidebar-submenu .nav-link:hover {
-     background: #e3ebcb;
+    background: #e3ebcb;
     color: #7ca514;
 }
 
@@ -40,7 +40,7 @@ body {
 .sidebar-submenu .nav-link.active {
     background: none;
     font-weight: 600;
-    color: #99CC00;
+    color: #99cc00;
 }
 .nav-link:hover,
 .nav-link:focus {
@@ -55,13 +55,13 @@ body {
 }
 
 .logout-btn:hover {
-    border: 1px solid #99CC00; 
+    border: 1px solid #99cc00;
     border-radius: 4px;
 }
 #main-content {
     flex: 1;
-    padding: 1rem; 
-    overflow-x: auto; 
+    padding: 1rem;
+    overflow-x: auto;
 }
 
 .sidebar {
@@ -88,3 +88,30 @@ body {
     text-align: center;
 }
 
+.custom-table thead th {
+    background-color: transparent !important;
+    padding-bottom: 15px;
+}
+
+.custom-table tbody tr {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #fcfcfc;
+    transform: scale(1.002);
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05) !important;
+}
+
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}

@@ -1,0 +1,23 @@
+.navbar {
+    background-color: #ffffff !important; /* Forces solid white */
+    z-index: 1045; /* Ensures it stays above the sidebar if needed */
+}
+
+/* Optional: Add a very slight bottom border in your accent color */
+.navbar.border-bottom {
+    border-bottom: 2px solid rgba(154, 205, 50, 0.2) !important;
+}
+
+/* Ensure the main content starts exactly below the navbar */
+body {
+    padding-top: 58px;
+}
+
+/* Transition for the content shift when sidebar opens */
+#main-content {
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.ms-220 {
+    margin-left: 220px !important;
+}

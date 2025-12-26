@@ -38,7 +38,7 @@ class AuthController extends Controller
     return redirect()->route('home');
     }
     public function login(Request $request)
-{
+    {
     $credentials = $request->validate([
         'email' => 'required|email',
         'password' => 'required',

@@ -17,18 +17,19 @@
 </head>
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-dark fixed-top border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top border-bottom bg-white shadow-sm" style="height: 58px;">
     <div class="container-fluid d-flex align-items-center">
-        <button id="toggle-btn" class="btn btn-outline-ligborder-bottom " type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" style="color:#99CC00; font-size:1.5rem;">
+        <button id="toggle-btn" class="btn border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" style="color:#99CC00; font-size:1.5rem;">
             <i class="bi bi-list"></i>
         </button>
 
-        <span class="navbar-brand fs-4 fw-bold" style="color: #99CC00;">Admin Panel</span>
-<i class="bi bi-0-circle"></i>
+        <span class="navbar-brand fs-4 fw-bold ms-2" style="color: #99CC00;">Admin Panel</span>
 
         <form class="ms-auto" method="POST" action="{{ route('logout') }}">
             @csrf
-            <button class="btn btn-sm me-5 logout-btn" style="font-size:1rem; color: #99CC00;">Logout</button>
+            <button class="btn btn-sm me-3 logout-btn fw-semibold" style="font-size:1rem; color: #99CC00;">
+                <i class="bi bi-box-arrow-right me-1"></i> Logout
+            </button>
         </form>
     </div>
 </nav>
@@ -40,7 +41,6 @@
     <main id="main-content" class="px-3">
         @yield('dashboard') 
         @yield('student_index') 
-        @yield('show_student')
         @yield('create_student')
         @yield('edit_student')
     </main>

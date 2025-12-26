@@ -1,7 +1,7 @@
-<div class="offcanvas offcanvas-start mt-2 sidebar"
+<div class="offcanvas offcanvas-start mt-2 sidebar shadow-sm border-end"
      tabindex="-1" id="sidebar" data-bs-backdrop="false"
      data-bs-scroll="true" 
-    style="top:58px; height:calc(100% - 58px); --bs-offcanvas-width:220px; z-index: 1030;">
+     style="top:58px; height:calc(100% - 58px); --bs-offcanvas-width:220px; z-index: 1030; background: white;">
     <div class="offcanvas-body">
         <ul class="nav flex-column gap-2">
             <li class="nav-item">
