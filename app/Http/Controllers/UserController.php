@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
 
 class UserController extends Controller
 {
@@ -73,24 +74,24 @@ public function edit(string $id)
 /**
  * Update the specified resource in storage.
  */
-public function update(Request $request, string $id)
-{
-    $user = User::findOrFail($id);
+    public function update(Request $request, string $id)
+    {
+        // 1. Find the specific instance first
+        $user = User::findOrFail($id);
 
-    // Validation: The 'unique' rule excludes the current user's ID 
-    // so you can save without changing the email.
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email,' . $user->id,
-    ]);
+        // 2. Validate
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+        ]);
 
-    $user->update([
-        'name' => $request->name,
-        'email' => $request->email,
-    ]);
+        // 3. Save the data to that specific instance
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save(); // Use save() instead of update() to avoid static collision
 
-    return redirect()->route('users.index')->with('success', 'User updated successfully!');
-}
+        return redirect()->route('users.index')->with('success', 'User updated successfully!');
+    }
 
     /**
      * Remove the specified resource from storage.

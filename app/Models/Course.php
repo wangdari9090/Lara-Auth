@@ -10,9 +10,9 @@ class Course extends Model
     use HasFactory;
 
         protected $fillable = [
-        'title', 
+        'name', 
+        'course_title', 
         'description', 
-        'department', 
         'branch_name', 
         'is_active'
     ];

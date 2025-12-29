@@ -11,7 +11,7 @@
                 <p class="text-muted small mb-0">Academic Year 2024-2025 • <span class="badge bg-white text-dark shadow-sm border">Term 2</span></p>
             </div>
             <div class="d-flex gap-2">
-                <a href="{{ route('students.create') }}" class="btn text-white px-4 py-2 rounded-3 shadow-sm" style="background-color: var(--accent);">
+                <a href="{{ route('students.create') }}" class="btn text-white px-4 py-2 rounded-3 shadow-sm" style="background-color: var(--main-color);">
                     <i class="bi bi-plus-lg me-2"></i>Enroll Student
                 </a>
                 <button class="btn btn-white border shadow-sm rounded-3"><i class="bi bi-download"></i></button>
@@ -22,7 +22,7 @@
             <div class="col-md-3">
                 <div class="card border-0 shadow-sm rounded-4 p-2">
                     <div class="card-body d-flex align-items-center">
-                        <div class="rounded-3 p-3 me-3" style="background: rgba(154, 205, 50, 0.1); color: var(--accent);">
+                        <div class="rounded-3 p-3 me-3" style="background: rgba(154, 205, 50, 0.1); color: var(--main-color);">
                             <i class="bi bi-mortarboard-fill fs-3"></i>
                         </div>
                         <div>
@@ -81,7 +81,7 @@
                         <div class="d-flex align-items-end justify-content-between px-3" style="height: 200px;">
                             <div class="bg-light rounded-top" style="width: 40px; height: 60%;"></div>
                             <div class="bg-light rounded-top" style="width: 40px; height: 85%;"></div>
-                            <div style="width: 40px; height: 95%; background-color: var(--accent);" class="rounded-top shadow-sm"></div>
+                            <div style="width: 40px; height: 95%; background-color: var(--main-color);" class="rounded-top shadow-sm"></div>
                             <div class="bg-light rounded-top" style="width: 40px; height: 70%;"></div>
                             <div class="bg-light rounded-top" style="width: 40px; height: 80%;"></div>
                             <div class="bg-light rounded-top" style="width: 40px; height: 50%;"></div>

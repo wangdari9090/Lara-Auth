@@ -1,11 +1,11 @@
 .pagination .page-item.active .page-link {
-    background-color: var(--accent) !important;
-    border-color: var(--accent) !important;
+    background-color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
     color: #fff !important;
 }
 
 .pagination .page-link {
-    color: var(--accent);
+    color: var(--main-color);
     background-color: #fff;
     border: 1px solid #dee2e6;
     transition: all 0.2s ease-in-out;
@@ -13,12 +13,12 @@
 
 .pagination .page-link:hover {
     background-color: #f8f9fa;
-    color: var(--accent);
+    color: var(--main-color);
     border-color: #dee2e6;
 }
 
 .pagination .page-link:focus {
-    box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(var(--main-color-rgb), 0.25);
     outline: none;
 }
 

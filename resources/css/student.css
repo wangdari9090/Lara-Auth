@@ -1,5 +1,5 @@
 :root {
-    --accent: #9acd32;
+    --main-color: #09487e;
     --text-dark: #555;
     --border: #999;
 }
@@ -20,7 +20,7 @@
 /* Fix icon alignment */
 .form-group i,
 .bi-building {
-    color: var(--accent);
+    color: var(--main-color);
     font-size: 18px;
     display: flex;
     align-items: center;
@@ -39,7 +39,7 @@
 
 .create-form:focus {
     box-shadow: none;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--main-color);
 }
 
 .custom-floating {
@@ -48,7 +48,7 @@
 }
 
 .form-select {
-    border: 1px solid var(--accent);
+    border: 1px solid var(--main-color);
     border-radius: 4px;
     padding: 10px;
 }

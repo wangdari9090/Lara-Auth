@@ -10,10 +10,25 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+  public function index(Request $request)
     {
-        // Fetches latest courses with pagination
-        $courses = Course::orderBy('id', 'desc')->paginate(10);
+        $query = Course::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('course_title', 'LIKE', "%{$search}%");
+            });
+        }
+        if ($request->filled('branch')) {
+            $query->where('branch_name', $request->branch);
+        }
+        if ($request->filled('department')) {
+            $query->where('department', $request->department);
+        }
+
+        $courses = $query->orderBy('id', 'desc')->paginate(10)->withQueryString();
+
         return view('courses.index', compact('courses'));
     }
 
@@ -31,16 +46,16 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'       => 'required|string|max:255',
+            'name'       => 'required|string|max:255',
+            'course_title' => 'nullable|string',
             'description' => 'nullable|string',
-            'department'  => 'required|string',
             'branch_name' => 'required|string',
         ]);
 
         Course::create([
-            'title'       => $request->title,
+            'name'       => $request->name,
+            'course_title' => $request->course_title,
             'description' => $request->description,
-            'department'  => $request->department,
             'branch_name' => $request->branch_name,
             'is_active'   => $request->has('is_active') ? true : false,
         ]);
@@ -53,30 +68,33 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('courses.edit', compact('course'));
+        return view('courses.edit', compact('course'))->with('success', 'Course update successfully.');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, string $id)
     {
+        $course = \App\Models\Course::findOrFail($id);
+
         $request->validate([
-            'title'       => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'department'  => 'required|string',
-            'branch_name' => 'required|string',
+            'name'          => 'required|string|max:255',
+            'course_title'  => 'required|string|max:255',
+            'description'    => 'required|string|max:255',
+            'branch_name'   => 'required|string|max:255',
+            'description'   => 'nullable|string',
         ]);
 
-        $course->update([
-            'title'       => $request->title,
-            'description' => $request->description,
-            'department'  => $request->department,
-            'branch_name' => $request->branch_name,
-            'is_active'   => $request->has('is_active') ? true : false,
-        ]);
+        $course->name         = $request->name;
+        $course->course_title = $request->course_title;
+        $course->description   = $request->description;
+        $course->branch_name  = $request->branch_name;
+        $course->description  = $request->description;
+        
+        $course->save();
 
-        return redirect()->route('courses.index')->with('success', 'Course updated successfully.');
+        return redirect()->route('courses.index')->with('success', 'Course updated successfully!');
     }
 
     /**

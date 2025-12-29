@@ -27,8 +27,6 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [AuthController::class, 'index'])->name('admin.dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    //  Route::get('/student', [AdminController::class, 'showStudent'])->name('show_student');
-    //  Route::get('/create.student', [AdminController::class, 'createStudent'])->name('create.student');
 });
 
 Route::middleware(['auth'])->group(function () {

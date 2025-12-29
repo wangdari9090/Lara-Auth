@@ -17,9 +17,9 @@ class CourseFactory extends Factory
    public function definition(): array
     {
         return [
-                'title'       => $this->faker->sentence(3), 
+                'name'       => $this->faker->sentence(3), 
+                'course_title' => $this->faker->sentence(2),
                 'description' => $this->faker->paragraph(),
-                'department'  => $this->faker->randomElement(['Computer Science', 'Business', 'Engineering', 'Arts']),
                 'branch_name' => $this->faker->randomElement(['Main Campus', 'City Center', 'Virtual Wing']),
                 'is_active'   => $this->faker->boolean(80), // 80% are active by default
             ];

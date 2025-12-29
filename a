@@ -1,0 +1,47 @@
+[33mcommit 566f802c15bbf47746ad67204b9526e1f027a65e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Fri Dec 26 17:26:05 2025 +0630
+
+    add user table and crud
+
+[33mcommit 63131784c4ae871d514fb71e4cddc94766442635[m[33m ([m[1;31mnew-origin/main[m[33m)[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Fri Dec 26 10:12:50 2025 +0630
+
+    update dashboard and student table
+
+[33mcommit c1776fe84eef8d7f86e0376973cec437e09a13e6[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Wed Dec 24 17:15:11 2025 +0630
+
+    update create student form and npm install for bootstrap
+
+[33mcommit 0f8b4387d0db4c6a2dd0150ebf644cd8144be9f9[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Tue Dec 23 17:25:05 2025 +0630
+
+    modify student create form
+
+[33mcommit 9abfb4c7e67c14be206fdfaebc8e74b228f6e92c[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Mon Dec 22 17:19:31 2025 +0630
+
+    add import and export btn
+
+[33mcommit 1160b3bf3b362cb10420ca3ab7829547ad4f3d2e[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Thu Dec 18 17:25:39 2025 +0630
+
+    move toggle btn
+
+[33mcommit 9ad45c4e20f8e30623057301314055965d81009a[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Thu Dec 18 17:03:37 2025 +0630
+
+    create home and admin dashboard
+
+[33mcommit abae43c9a7286acdcdf6bfc484c26c40a212aa8e[m
+Author: Wanda <wangdari9090@gmail.com>
+Date:   Wed Dec 17 16:59:40 2025 +0630
+
+    Initial commit

@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container-fluid py-4">
-    <div class="mb-4">
-        <a href="{{ route('users.index') }}" class="text-decoration-none text-muted small">
-            <i class="bi bi-arrow-left me-1"></i> Back to Users
-        </a>
-        <h2 class="fw-bold text-dark mt-2">Edit User</h2>
-    </div>
+    <div class="d-flex align-items-center mb-4">
+            <a href="{{ route('users.index') }}" class="btn btn-light  rounded-circle shadow-sm me-4" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <div>
+                <h3 class="fw-bold mb-1">Edit User</h3>
+            </div>
+        </div>
 
     <div class="row">
         <div class="col-md-6">
@@ -45,12 +47,12 @@
                     </div>
 
                     <div class="d-flex gap-2 pt-2">
-                        <button type="submit" class="btn  pb-2 rounded-pill px-4 text-white shadow-sm d-flex align-items-center justify-content-center" 
-                                style="background-color: var(--accent); min-width: 140px;">
+                        <button type="submit" class="btn pb-2 rounded-pill px-4 text-white shadow-sm " 
+                                style="background-color: var(--main-color); min-width: 140px;">
                             <i class="bi bi-check-lg me-1"></i> Save Changes
                         </button>
-                        <a href="{{ route('users.index') }}" class="btn btn-light rounded-pill px-4 d-flex align-items-center justify-content-center pb-2" 
-                           style="height: 42px; border-color: var(--accent);">
+                        <a href="{{ route('users.index') }}" class="btn btn-light rounded-pill px-4 pb-2" 
+                           style="height: 42px; border-color: var(--main-color);">
                             Cancel
                         </a>
                     </div>

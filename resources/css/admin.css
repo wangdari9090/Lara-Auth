@@ -1,68 +1,11 @@
 body {
     padding-left: 0;
 }
-
-/* Main sidebar links */
-.sidebar-link {
-    font-weight: 500;
-    color: black;
-    background: none;
-    border-radius: 5%;
+:root {
+    --main-color: #09487e;
+    --bg-light: #e1e4e7;
 }
-
-.sidebar-link:hover {
-    background: #e3ebcb;
-    color: #7ca514;
-}
-
-/* Submenu container */
-.sidebar-submenu {
-    font-weight: 500;
-    color: black;
-    background: none;
-    border-radius: 5%;
-}
-
-/* Submenu links */
-.sidebar-submenu .nav-link {
-    color: #7ca514;
-    font-size: 0.9rem;
-    background: none;
-    border-radius: 5%;
-}
-
-.sidebar-submenu .nav-link:hover {
-    background: #e3ebcb;
-    color: #7ca514;
-}
-
-/* Active submenu item */
-.sidebar-submenu .nav-link.active {
-    background: none;
-    font-weight: 600;
-    color: #99cc00;
-}
-.nav-link:hover,
-.nav-link:focus {
-    color: inherit;
-}
-.navbar {
-    z-index: 1040; /* higher than sidebar */
-}
-.logout-btn {
-    border: none; /* no border by default */
-    transition: border 0.2s ease, color 0.2s ease; /* smooth effect */
-}
-
-.logout-btn:hover {
-    border: 1px solid #99cc00;
-    border-radius: 4px;
-}
-#main-content {
-    flex: 1;
-    padding: 1rem;
-    overflow-x: auto;
-}
+/* ဆိုက်ဘား စတိုင် အစ */
 
 .sidebar {
     width: 220px;
@@ -114,4 +57,89 @@ body {
 .badge {
     font-weight: 600;
     letter-spacing: 0.3px;
+}
+#main-content {
+    margin-left: 220px;
+}
+
+.sidebar-link {
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background-color: var(--main-color);
+    color: whitesmoke;
+}
+.nav-link {
+    font-size: 13.5px;
+    color: #666;
+}
+.nav-link:hover {
+    background-color: var(--main-color);
+    border-radius: 4px;
+    color: whitesmoke;
+}
+
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        left: -220px;
+    }
+    #main-content {
+        margin-left: 0;
+    }
+}
+
+#sidebar-wrapper {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 58px);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+#main-content {
+    margin-left: 220px;
+    transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+    #main-content {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+
+    #sidebar-wrapper {
+        left: 0;
+        transform: translateX(-100%);
+        z-index: 1050;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .toggled #sidebar-wrapper {
+        transform: translateX(0);
+    }
+}
+@media (min-width: 992px) {
+    .toggled #sidebar-wrapper {
+        transform: translateX(-100%);
+    }
+    .toggled #main-content {
+        margin-left: 0;
+    }
+}
+/*  ဆိုက်ဘား အဆုံး */
+
+.logout-btn {
+    border: none;
+    transition: border 0.2s ease, color 0.2s ease;
+}
+#main-content {
+    flex: 1;
+    padding: 1rem;
+    overflow-x: auto;
 }

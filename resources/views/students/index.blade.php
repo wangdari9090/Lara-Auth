@@ -20,7 +20,7 @@
                 <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 shadow-sm">
                     <i class="bi bi-file-earmark-arrow-down me-1"></i> Export
                 </button>
-                <a href="{{ route('students.create') }}" class="btn text-white btn-sm rounded-pill px-4 shadow-sm" style="background-color: var(--accent);">
+                <a href="{{ route('students.create') }}" class="btn text-white btn-sm rounded-pill px-4 shadow-sm" style="background-color: var(--main-color);">
                     <i class="bi bi-plus-lg me-1"></i> New Student
                 </a>
             </div>
@@ -104,7 +104,7 @@
 
             {{-- <div class="col-6 col-md-3 col-lg-2">
                 <button class="btn btn-sm rounded-pill w-100 fw-bold shadow-sm py-2 text-white" 
-                        style="background-color: var(--accent); height: 40px; border: none;">
+                        style="background-color: var(--main-color); height: 40px; border: none;">
                     <i class="bi bi-filter me-1"></i> Filter
                 </button>
             </div> --}}
@@ -118,23 +118,20 @@
                 <table class="table table-striped table-hover align-middle mb-0 student-table">
                     <thead class="theme-header">
                         <tr>
-                            <th class="ps-4 py-3"><input type="checkbox" class="form-check-input"></th>
-                            <th class="py-3">#</th>
-                            <th class="py-3">Name</th>
-                            <th class="py-3">Email</th>
-                            <th class="py-3">Role</th>
-                            <th class="py-3">Status</th>
+                            <th class="py-3">Student ID</th>
+                            <th class="py-3">Student Name</th>
+                            <th class="py-3">Course</th>
+                            <th class="py-3">Branch Name</th>
+                            <th class="py-3">Created Time</th>
+                            <th class="py-3">Updated Time</th>
                             <th class="text-end pe-4 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
     @forelse ($students as $student)
     <tr>
-        <td class="ps-4">
-            <input type="checkbox" name="selected[]" value="{{ $student->id }}" class="form-check-input">
-        </td>
         <td class="text-muted small">
-            {{ ($students->currentPage() - 1) * $students->perPage() + $loop->iteration }}
+            {{ $student->id }}
         </td>
         <td>
             <span class="fw-semibold text-dark">{{ $student->student_name }}</span>
@@ -145,13 +142,13 @@
         <td>
             <span class="small">{{ $student->course }}</span>
         </td>
-        <td>
-            @if(strtolower($student->status) == 'active')
-                <span class="badge rounded-pill bg-success-subtle text-success px-3">Active</span>
-            @else
-                <span class="badge rounded-pill bg-secondary-subtle text-secondary px-3">Inactive</span>
-            @endif
+       <td class="text-muted small">
+            <div>Created: {{ $student->created_at }}</div>
         </td>
+        <td class="text-muted small">
+            <div>Updated: {{ $student->updated_at }}</div>
+        </td>
+
         <td class="text-end pe-4">
             <div class="btn-group shadow-sm rounded-pill overflow-hidden">
                 <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-white border-end" title="Edit">
@@ -185,7 +182,7 @@
             <nav>
                 <ul class="pagination pagination-sm mb-0">
                     <li class="page-item disabled"><a class="page-link shadow-none" href="#">Previous</a></li>
-                    <li class="page-item active"><a class="page-link shadow-none border-0" style="background-color: var(--accent);" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link shadow-none border-0" style="background-color: var(--main-color);" href="#">1</a></li>
                     <li class="page-item"><a class="page-link shadow-none text-dark" href="#">2</a></li>
                     <li class="page-item"><a class="page-link shadow-none text-dark" href="#">3</a></li>
                     <li class="page-item"><a class="page-link shadow-none" href="#">Next</a></li>
