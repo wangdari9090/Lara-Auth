@@ -14,10 +14,8 @@ class UserController extends Controller
      */
    public function index(Request $request)
 {
-    // Start a query on the User model
     $query = User::query();
 
-    // Check if the user has typed anything in the search box
     if ($request->filled('search')) {
         $search = $request->search;
         
@@ -27,6 +25,7 @@ class UserController extends Controller
               ->orWhere('id', 'LIKE', "%{$search}%");
         });
     }
+
     $users = $query->orderBy('id', 'desc')->paginate(10)->withQueryString();
 
     return view('users.index', compact('users'));
@@ -48,15 +47,15 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'role' => 'required|string',
-            'password' => 'required|string|min:8|confirmed',
+            // 'role' => 'required|string',
+            // 'password' => 'required|string|min:8|confirmed',
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => $request->role,
-            'password' => Hash::make($request->password),
+            // 'role' => $request->role,
+            // 'password' => Hash::make($request->password),
         ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');

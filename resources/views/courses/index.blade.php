@@ -44,6 +44,13 @@
                             City Center
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item rounded-pill py-2 {{ request('branch') == 'ygn' ? 'active' : '' }}" 
+                           href="{{ route('courses.index', array_merge(request()->query(), ['branch' => 'ygn'])) }}"
+                           style="font-size: 13px;">
+                            YGN
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -58,21 +65,25 @@
     <div class="card border-0 shadow-sm 2 overflow-hidden">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="theme-header">
-                    <tr style="background-color: var(--main-color); color: #fff; color: white;">
-                        <th class="ps-4 py-3 text-white" style="background-color: var(--main-color); color: #fff; ">ID</th>
-                        <th class="py-3 text-white" style="background-color: var(--main-color); color: #fff;">Name</th>
-                        <th class="py-3 text-white" style="background-color: var(--main-color); color: #fff;">Course Title</th>
-                        <th class="py-3 text-white" style="background-color: var(--main-color); color: #fff;">Branch</th>
-                        <th class="py-3 text-center text-white" style="background-color: var(--main-color); color: #fff;">Description</th>
-                        <th class="py-3 text-center text-white" style="background-color: var(--main-color); color: #fff;">Status</th>
-                        <th class="text-end pe-4 py-3 text-white" style="background-color: var(--main-color); color: #fff; ">Actions</th>
+                <thead class="theme-header" style="background-color: #09487e">
+                    <tr style="background-color: #09487e">
+                        <th class="ps-4 py-3 fw-semibold">ID</th>
+                        <th class="ps-4 py-3 fw-semibold">Name</th>
+                        <th class="ps-4 py-3 fw-semibold">Course Title</th>
+                        <th class="ps-4 py-3 fw-semibold">Branch</th>
+                       <th class="ps-4 py-3 fw-semibold">Description</th>
+                       <th class="ps-4 py-3 fw-semibold">Status</th>
+                        <th class="ps-4 py-3 fw-semibold">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($courses as $course)
                     <tr>
-                        <td class="ps-4 text-muted small">{{ $course->id }}</td>
+                        <td class="ps-4 text-muted small">
+                            <span class="badge bg-light text-theme border border-primary-subtle rounded-pill px-3 fw-medium">
+                                {{ $course->id }}
+                            </span>
+                        </td>
                         <td>{{ $course->name }}</td>
                         <td>
                             <div class="fw-semibold text-dark">{{ $course->course_title }}</div>

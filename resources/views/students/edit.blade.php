@@ -38,13 +38,13 @@
             <input type="text" name="branch_name" class="form-control" value="{{ old('branch_name', $student->branch_name) }}" required>
         </div>
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label>Status</label>
             <select name="status" class="form-select" required>
                 <option value="active" {{ old('status', $student->status) == 'active' ? 'selected' : '' }}>Active</option>
                 <option value="inactive" {{ old('status', $student->status) == 'inactive' ? 'selected' : '' }}>Inactive</option>
             </select>
-        </div>
+        </div> --}}
 
         <button type="submit" class="btn btn-success">Update Student</button>
         <a href="{{ route('students.index') }}" class="btn btn-secondary">Cancel</a>

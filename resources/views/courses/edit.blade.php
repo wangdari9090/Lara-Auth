@@ -1,7 +1,7 @@
 @extends('layouts.admin_main')
 
 @section('content')
-@if(session('success'))
+{{-- @if(session('success'))
     <div class="alert alert-success border-0 shadow-sm rounded-4 d-flex align-items-center mb-4" role="alert" style="background-color: #eef7e8; border-left: 5px solid #99CC00 !important;">
         <i class="bi bi-check-circle-fill me-2" style="color: #99CC00;"></i>
         <div class="fw-medium text-dark">
@@ -24,7 +24,7 @@
         </div>
         <button type="button" class="btn-close ms-auto shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-@endif
+@endif --}}
 <div class="container-fluid mt-4 pb-5"  >
     <div class="mx-auto col-12 col-lg-9">
         

@@ -1,7 +1,7 @@
 @extends('layouts.admin_main')
 
 @section('content')
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 col-lg-5 col-md-8 col-sm-10 justify-content-center">
     <div class="d-flex align-items-center mb-4">
             <a href="{{ route('users.index') }}" class="btn btn-light  rounded-circle shadow-sm me-4" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
                 <i class="bi bi-arrow-left"></i>
@@ -12,7 +12,6 @@
         </div>
 
     <div class="row">
-        <div class="col-md-6">
             <div class="card border-0 shadow-sm rounded-4 p-4">
                 <form action="{{ route('users.update', $user->id) }}" method="POST">
                     @csrf
@@ -58,7 +57,6 @@
                     </div>
                 </form>
             </div>
-        </div>
     </div>
 </div>
 @endsection

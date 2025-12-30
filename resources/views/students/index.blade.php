@@ -1,195 +1,130 @@
 @extends('layouts.admin_main')
 
-@section('title', 'Student Dashboard')
+@section('title', 'Student Directory')
 
 @section('content')
-<div class="container-fluid mt-4 pb-5">
 
-    <div class="mx-auto col-12 col-lg-11 col-xl-10">
-        
-        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-            <div>
-                <h3 class="fw-bold mb-0">Student Directory</h3>
-                <p class="text-muted small mb-0">Manage and monitor enrolled students</p>
-            </div>
+<div class="main-content"> 
+    <div class="container-fluid mt-4 pb-5">
+        <div class="mx-auto col-12 ">
+            
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h3 class="fw-bold mb-1">Student Directory</h3>
+                    <p class="text-muted small mb-0">List of currently enrolled students</p>
+                </div>
 
-            <div class="d-flex flex-wrap gap-2">
-                <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 shadow-sm">
-                    <i class="bi bi-file-earmark-arrow-up me-1"></i> Import
-                </button>
-                <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 shadow-sm">
-                    <i class="bi bi-file-earmark-arrow-down me-1"></i> Export
-                </button>
-                <a href="{{ route('students.create') }}" class="btn text-white btn-sm rounded-pill px-4 shadow-sm" style="background-color: var(--main-color);">
+                <a href="{{ route('students.create') }}" class="btn btn-theme rounded-pill px-4 shadow-sm">
                     <i class="bi bi-plus-lg me-1"></i> New Student
                 </a>
             </div>
+
+            
+   <form action="{{ route('students.index') }}" method="GET" autocomplete="off" class="mb-0">
+    <div class="d-flex align-items-center gap-2">
+        
+        <div class="filter-control-group d-flex align-items-center px-3 bg-white border rounded-pill" style="width: 250px; height: 42px;">
+            <input type="text" name="search" 
+                   value="{{ request('search') }}" 
+                   class="border-0 bg-transparent flex-grow-1" 
+                   placeholder="Search student name..." 
+                   style="outline: none; font-size: 13px; padding-bottom: 3px">
+
+            <button type="submit" class="border-0 bg-transparent p-0 ms-2">
+                <i class="bi bi-search text-muted small"></i>
+            </button>
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 mb-4">
-    <div class="card-body p-3">
-        <div class="row g-2 justify-content-lg-end align-items-center">
-            
-            <div class="col-12 col-md-4">
-                <div class="filter-control-group d-flex align-items-center px-3 bg-white border rounded-pill" style="height: 40px;">
-                    <i class="bi bi-search me-2 text-muted"></i>
-                    <input type="text" 
-                           class="filter-control-input flex-grow-1 border-0 shadow-none bg-transparent" 
-                           placeholder="Search students..." 
-                           style="outline: none; font-size: 14px;">
+        <div class="dropdown" style="min-width: 180px;">
+    <button class="btn dropdown-toggle rounded-pill text-white w-100 d-flex justify-content-between px-3 pb-2" 
+            type="button" 
+            id="branchDropdown" 
+            data-bs-toggle="dropdown" 
+            style="background-color: var(--main-color); height: 39px; font-size: 14px; border:none;">
+        {{ request('branch') ? request('branch') : 'All Branches' }}
+    </button>
+    
+    <ul class="dropdown-menu border-0 shadow-sm rounded-4 mt-2 py-2" aria-labelledby="branchDropdown">
+        <li><a class="dropdown-item py-2" href="{{ route('students.index', ['branch' => '']) }}">All Branches</a></li>
+        <li><a class="dropdown-item py-2" href="{{ route('students.index', ['branch' => 'Main Branch']) }}">Main Branch</a></li>
+        <li><a class="dropdown-item py-2" href="{{ route('students.index', ['branch' => 'City Center']) }}">City Center</a></li>
+        <li><a class="dropdown-item py-2" href="{{ route('students.index', ['branch' => 'ygn']) }}">YGN</a></li>
+    </ul>
+</div>
+    </div>
+</form>
+</div>
+            <div class="rounded overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0 student-table">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">ID</th>
+                                <th class="ps-4">Student Code</th>
+                                <th>Student Name</th>
+                                <th>Branch Name</th>
+                                <th class="text-end pe-4">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($students as $student)
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="badge bg-light text-theme border border-primary-subtle rounded-pill px-3 fw-medium">
+                                        {{ $student->id }}
+                                    </span>
+                                </td>
+                                <td class="ps-4">
+                                    <span class="d-flex align-items-center">
+                                        {{ $student->student_code }}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="fw-bold text-dark">{{ $student->student_name }}</span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="text-muted small">
+                                        <i class="bi bi-geo-alt me-1"></i> {{ $student->branch_name ?? 'N/A' }}
+                                    </div>
+                                </td>
+
+                                <td class="text-end pe-4">
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-light rounded-pill px-3 border shadow-none" title="Edit">
+                                            <i class="bi bi-pencil-square text-primary me-1"></i>
+                                        </a>
+                                        
+                                        <form action="{{ route('students.destroy', $student->id) }}" method="POST" onsubmit="return confirm('Delete this record?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-light rounded-pill px-3 border shadow-none" title="Delete">
+                                                <i class="bi bi-trash3 text-danger me-1"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="4" class="text-center py-5 text-muted">
+                                    <i class="bi bi-inbox fs-1 d-block mb-2 opacity-25"></i>
+                                    No students found.
+                                </td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="col-6 col-md-3 col-lg-2">
-    <div class="dropdown h-100">
-        <button class="filter-control-group d-flex align-items-center px-3 bg-white border rounded-pill w-100 shadow-none" 
-                type="button" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false" 
-                style="height: 40px; font-size: 14px; color: #444; border-color: #dee2e6 !important;">
-            <span class="flex-grow-1 text-start">Filter By User</span>
-            <i class="bi bi-chevron-down small text-muted ms-1"></i>
-        </button>
-
-        <ul class="dropdown-menu shadow-sm border-0 rounded-4 mt-2 p-2" style="min-width: 100%; font-size: 14px;">
-            <li>
-                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
-                    <i class="bi bi-circle-fill me-2 small text-muted"></i> All Roles
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
-                    <i class="bi bi-shield-lock me-2 small text-muted"></i> Admin
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
-                    <i class="bi bi-mortarboard me-2 small text-muted"></i> Student
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="col-6 col-md-3 col-lg-2">
-    <div class="dropdown h-100">
-        <button class="filter-control-group d-flex align-items-center px-3 bg-white border rounded-pill w-100 shadow-none" 
-                type="button" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false" 
-                style="height: 40px; font-size: 14px; color: #444; border-color: #dee2e6 !important;">
-            <span class="flex-grow-1 text-start"> Sort By Status</span>
-            <i class="bi bi-chevron-down small text-muted ms-1"></i>
-        </button>
-
-        <ul class="dropdown-menu shadow-sm border-0 rounded-4 mt-2 p-2" style="min-width: 100%; font-size: 14px;">
-            <li>
-                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
-                    <i class="bi bi-circle-fill me-2 small text-muted"></i> All Roles
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
-                    <i class="bi bi-shield-lock me-2 small text-muted"></i> Admin
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-item rounded-3 py-2 dropdown-item" href="#">
-                    <i class="bi bi-mortarboard me-2 small text-muted"></i> Student
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-            {{-- <div class="col-6 col-md-3 col-lg-2">
-                <button class="btn btn-sm rounded-pill w-100 fw-bold shadow-sm py-2 text-white" 
-                        style="background-color: var(--main-color); height: 40px; border: none;">
-                    <i class="bi bi-filter me-1"></i> Filter
-                </button>
-            </div> --}}
+            <div class="mt-4">
+                {{ $students->links('pagination::bootstrap-5') }}
+            </div>
             
         </div>
     </div>
-</div>
-
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle mb-0 student-table">
-                    <thead class="theme-header">
-                        <tr>
-                            <th class="py-3">Student ID</th>
-                            <th class="py-3">Student Name</th>
-                            <th class="py-3">Course</th>
-                            <th class="py-3">Branch Name</th>
-                            <th class="py-3">Created Time</th>
-                            <th class="py-3">Updated Time</th>
-                            <th class="text-end pe-4 py-3">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-    @forelse ($students as $student)
-    <tr>
-        <td class="text-muted small">
-            {{ $student->id }}
-        </td>
-        <td>
-            <span class="fw-semibold text-dark">{{ $student->student_name }}</span>
-        </td>
-        <td class="text-muted small">
-            {{ $student->student_code }}
-        </td>
-        <td>
-            <span class="small">{{ $student->course }}</span>
-        </td>
-       <td class="text-muted small">
-            <div>Created: {{ $student->created_at }}</div>
-        </td>
-        <td class="text-muted small">
-            <div>Updated: {{ $student->updated_at }}</div>
-        </td>
-
-        <td class="text-end pe-4">
-            <div class="btn-group shadow-sm rounded-pill overflow-hidden">
-                <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-white border-end" title="Edit">
-                    <i class="bi bi-pencil text-primary"></i>
-                </a>
-                
-                <form action="{{ route('students.destroy', $student->id) }}" method="POST" onsubmit="return confirm('Are you sure?')" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-white text-danger" title="Delete">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </form>
-            </div>
-        </td>
-    </tr>
-    @empty
-    <tr>
-        <td colspan="7" class="text-center py-4 text-muted">
-            No students found in the database.
-        </td>
-    </tr>
-    @endforelse
-</tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 gap-3">
-            <span class="text-muted small">Showing 1 to 10 of 200 entries</span>
-            <nav>
-                <ul class="pagination pagination-sm mb-0">
-                    <li class="page-item disabled"><a class="page-link shadow-none" href="#">Previous</a></li>
-                    <li class="page-item active"><a class="page-link shadow-none border-0" style="background-color: var(--main-color);" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link shadow-none text-dark" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link shadow-none text-dark" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link shadow-none" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-
 </div>
 @endsection

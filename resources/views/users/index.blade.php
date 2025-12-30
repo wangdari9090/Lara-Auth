@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container-fluid py-4 col-lg-10">
+    <div class="mb-4">
+        <h2 class="fw-bold text-dark mt-2">User Table</h2>
+    </div>
  <div class="d-flex align-items-center gap-2">
     <form action="{{ route('users.index') }}" method="GET" autocomplete="off" class="d-none d-md-flex mb-0">
         <div class="filter-control-group px-3 bg-white border rounded-pill custom-pill-height" style="width: 250px;">
@@ -29,18 +32,18 @@
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
                 <thead class="bg-light">
-                      <tr style="background-color: var(--main-color); color: white;">
-                        <th class="ps-4 py-3 fw-semibold" style="font-size: 13px;background-color: var(--main-color); color: white;">ID</th>
-                        <th class="py-3 fw-semibold" style="font-size: 13px;background-color: var(--main-color); color: white;">USER NAME</th>
-                        <th class="py-3 fw-semibold" style="font-size: 13px;background-color: var(--main-color); color: white;">EMAIL</th>
-                        <th class="pe-4 py-3 text-end fw-semibold" style="font-size: 13px;background-color: var(--main-color); color: #fff;">ACTIONS</th>
+                      <tr>
+                        <th class="ps-4 py-3 fw-semibold">ID</th>
+                        <th class="py-3 fw-semibold">USER NAME</th>
+                        <th class="py-3 fw-semibold">EMAIL</th>
+                        <th class="pe-4 py-3 text-end fw-semibold" style="font-size: 13px; color: #fff;">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $user)
                     <tr>
                         <td class="ps-4">
-                            <span class="text-muted fw-medium">{{ $user->id }}</span>
+                            <span class="badge bg-light text-theme border border-primary-subtle rounded-pill px-3 fw-medium">{{ $user->id }}</span>
                         </td>
                         <td>
                             <span class="fw-bold text-dark">{{ $user->name }}</span>

@@ -27,7 +27,7 @@
     <div class="d-flex">
         @include('admin.sidebar')
 
-        <main id="main-content" class="flex-grow-1 px-4" style="margin-top: 58px; transition: all 0.3s ease;">
+        <main id="main-content" class="flex-grow-1 px-4" style="transition: all 0.3s ease;">
             <div class="py-4">
                 @yield('content')
             </div>

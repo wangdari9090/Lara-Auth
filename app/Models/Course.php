@@ -16,4 +16,5 @@ class Course extends Model
         'branch_name', 
         'is_active'
     ];
+    protected $table = 'courses';
 }

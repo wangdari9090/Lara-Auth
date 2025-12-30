@@ -37,17 +37,18 @@
                         </div>
                         @error('email') <div class="text-danger small mt-1 ms-3">{{ $message }}</div> @enderror
                     </div>
-                </div>
+            </div>
 
+               <form action="{{ route('users.store') }}" method="POST">
+                 @csrf 
                 <div class="d-flex gap-2 pt-3">
-                    <button type="submit" class="btn rounded-pill px-4 text-white shadow-sm " 
-                            style="background-color: var(--main-color);">
-                        <i class="bi bi-person-plus me-2"></i> <span>Create User</span>
-                    </button>
-                    <a href="{{ route('users.index') }}" class="btn btn-light rounded-pill px-4 " 
-                       style="height: 42px; border: 1px solid #dee2e6;"> Cancel
-                    </a>
-                </div>
+                        <button type="submit" class="btn rounded-pill px-4 text-white shadow-sm" style="background-color: var(--main-color);">
+                            <i class="bi bi-person-plus me-2"></i> <span>Create User</span>
+                        </button>
+                        <a href="{{ route('users.index') }}" class="btn btn-light rounded-pill px-4 " 
+                        style="height: 42px; border: 1px solid #dee2e6;"> Cancel
+                        </a>
+                    </div>
             </form>
         </div>
     </div>

@@ -13,11 +13,27 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $students = Student::orderBy('id', 'desc')->paginate(10);
-        return view('students.index', compact('students'));
+  public function index(Request $request)
+{
+    $query = Student::query();
+
+    if ($request->filled('search')) {
+        $search = $request->search;
+        $query->where(function($q) use ($search) {
+            $q->where('student_name', 'LIKE', "%{$search}%")
+              ->orWhere('student_code', 'LIKE', "%{$search}%");
+        });
     }
+
+    if ($request->filled('branch')) {
+        $query->where('branch_name', $request->branch);
+    }
+    $students = $query->orderBy('id', 'desc')
+                      ->paginate(10)
+                      ->withQueryString();
+
+    return view('students.index', compact('students'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +53,7 @@ class StudentController extends Controller
         'student_name' => 'required|string',
         'course'       => 'required|string',
         'branch_name'  => 'required|string',
-        'status'       => 'required|in:active,inactive',
+        // 'status'       => 'required|in:active,inactive',
         ]);
 
         Student::create($request->all());
@@ -72,7 +88,7 @@ class StudentController extends Controller
             'student_name' => 'required|string',
             'course'       => 'required|string',
             'branch_name'  => 'required|string',
-            'status'       => 'required|in:active,inactive',
+            // 'status'       => 'required|in:active,inactive',
         ]);
 
         $student->update($request->all());

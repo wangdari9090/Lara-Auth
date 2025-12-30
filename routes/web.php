@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 // Protected admin routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', [AuthController::class, 'index'])->name('admin.dashboard');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 });
 
 Route::middleware(['auth'])->group(function () {

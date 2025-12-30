@@ -1,3 +1,14 @@
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
+
+.dropdown-item:hover {
+    background-color: #bdc8d3;
+    color: var(--main-color);
+}
+
 .pagination .page-link {
     color: var(--main-color);
     border: 1px solid #dee2e6;

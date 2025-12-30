@@ -50,7 +50,7 @@ class AuthController extends Controller
         // Redirect based on role
         return redirect()->route(
             auth()->user()->role === 'admin'
-                ? 'admin.dashboard'
+                ? 'students.index'
                 : 'home'
         );
     }
@@ -67,7 +67,7 @@ class AuthController extends Controller
         // Example: count users for dashboard
         $userCount = User::count();
 
-        return view('admin.dashboard', compact('userCount'));
+        return view('students.index', compact('userCount'));
     }
 
     /**

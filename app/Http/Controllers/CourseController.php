@@ -28,6 +28,7 @@ class CourseController extends Controller
         }
 
         $courses = $query->orderBy('id', 'desc')->paginate(10)->withQueryString();
+        $coursesCount = $query->count();
 
         return view('courses.index', compact('courses'));
     }
