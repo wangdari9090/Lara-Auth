@@ -37,6 +37,7 @@ class AuthController extends Controller
 
     return redirect()->route('home');
     }
+    
     public function login(Request $request)
     {
     $credentials = $request->validate([
@@ -44,13 +45,12 @@ class AuthController extends Controller
         'password' => 'required',
     ]);
 
-    if (Auth::attempt($credentials, $request->filled('remember'))) {
+    if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
 
-        // Redirect based on role
         return redirect()->route(
-            auth()->user()->role === 'admin'
-                ? 'students.index'
+            auth()->user()->email === 'admin@gmail.com'
+                ? 'admin.dashboard'
                 : 'home'
         );
     }
@@ -64,7 +64,6 @@ class AuthController extends Controller
 
     public function index()
     {
-        // Example: count users for dashboard
         $userCount = User::count();
 
         return view('students.index', compact('userCount'));

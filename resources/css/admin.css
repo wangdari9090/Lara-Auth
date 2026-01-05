@@ -5,7 +5,7 @@ body {
     --main-color: #09487e;
     --bg-light: #e1e4e7;
 }
-/* ဆိုက်ဘား စတိုင် အစ */
+/* sidebar start */
 
 .sidebar {
     width: 220px;
@@ -132,7 +132,7 @@ body {
         margin-left: 0;
     }
 }
-/*  ဆိုက်ဘား အဆုံး */
+/*  sidebar end */
 
 .logout-btn {
     border: none;

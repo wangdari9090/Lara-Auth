@@ -20,9 +20,14 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        // 'password',
+        'encrypted_password',
         // 'role',
     ];
+    
+    public function getAuthPassword()
+    {
+        return $this->encrypted_password;
+    }
 
     /**
      * The attributes that should be hidden for serialization.

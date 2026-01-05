@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+{{-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <!-- Brand -->
         <a class="navbar-brand fw-bold" href="{{ route('home') }}">EduPortal</a>
@@ -46,4 +46,4 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> --}}
