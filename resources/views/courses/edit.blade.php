@@ -1,30 +1,6 @@
 @extends('layouts.admin_main')
 
 @section('content')
-{{-- @if(session('success'))
-    <div class="alert alert-success border-0 shadow-sm rounded-4 d-flex align-items-center mb-4" role="alert" style="background-color: #eef7e8; border-left: 5px solid #99CC00 !important;">
-        <i class="bi bi-check-circle-fill me-2" style="color: #99CC00;"></i>
-        <div class="fw-medium text-dark">
-            {{ session('success') }}
-        </div>
-        <button type="button" class="btn-close ms-auto shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-@if($errors->any())
-    <div class="alert alert-danger border-0 shadow-sm rounded-4 d-flex align-items-start mb-4" role="alert" style="background-color: #fff5f5; border-left: 5px solid #dc3545 !important;">
-        <i class="bi bi-exclamation-triangle-fill me-2 mt-1" style="color: #dc3545;"></i>
-        <div>
-            <div class="fw-bold text-dark mb-1">Please fix the following errors:</div>
-            <ul class="mb-0 ps-3 small text-secondary">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <button type="button" class="btn-close ms-auto shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif --}}
 <div class="container-fluid mt-4 pb-5"  >
     <div class="mx-auto col-12 col-lg-9">
         

@@ -4,7 +4,9 @@
 <div class="container-fluid py-4">
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
         
-        <h2 class="fw-bold text-dark mb-0">Course Management</h2>
+       <a href="{{ route('courses.index') }}" class="text-decoration-none">
+                    <h3 class="fw-bold mb-1" style="color: #2d3436;">Course Management</h3>
+                </a>   
 
         <div class="d-flex align-items-center gap-2">
             
@@ -21,6 +23,8 @@
                     </span>
                     <i class="bi bi-chevron-down ms-2 small opacity-50"></i>
                 </button>
+
+                
 
                 <ul class="dropdown-menu shadow-sm border-0 rounded-4 mt-2 p-2" style="min-width: 200px;">
                     <li class="mb-1">
@@ -45,8 +49,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item rounded-pill py-2 {{ request('branch') == 'ygn' ? 'active' : '' }}" 
-                           href="{{ route('courses.index', array_merge(request()->query(), ['branch' => 'ygn'])) }}"
+                        <a class="dropdown-item rounded-pill py-2 {{ request('branch') == 'YGN' ? 'active' : '' }}" 
+                           href="{{ route('courses.index', array_merge(request()->query(), ['branch' => 'YGN'])) }}"
                            style="font-size: 13px;">
                             YGN
                         </a>
@@ -84,12 +88,11 @@
                                 {{ $course->id }}
                             </span>
                         </td>
-                        <td>{{ $course->name }}</td>
+                        <td><span class="text-secondary" style="font-size: 14px;">{{ $course->name }}</span></td>
                         <td>
-                            <div class="fw-semibold text-dark">{{ $course->course_title }}</div>
-                            <div class="small text-muted text-truncate" style="max-width: 200px;">{{ $course->title }}</div>
+                            <span class="text-secondary" style="font-size: 14px;">{{ $course->course_title }}</span>
                         </td>
-                        <td><span class="small">{{ $course->branch_name }}</span></td>
+                        <td><span class="text-secondary" style="font-size: 14px;">{{ $course->branch_name }}</span></td>
                         <td><span class="small">{{ $course->description }}</span></td>
                         <td class="text-center">
                             <span class="badge rounded-pill {{ $course->is_active ? 'bg-success-subtle text-success' : 'bg-secondary-subtle text-secondary' }} px-3">
@@ -116,7 +119,7 @@
                         </td>
                     </tr>
 
-                   <div class="modal fade" id="viewCourse{{ $course->id }}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="viewCourse{{ $course->id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg rounded-4">
             

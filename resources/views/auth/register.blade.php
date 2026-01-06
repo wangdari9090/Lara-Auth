@@ -24,7 +24,7 @@
             <form action="{{ route('register') }}" method="POST">
                 @csrf
 
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="name" class="form-label small fw-bold text-muted">Name</label>
                     <input type="name"
                            name="name"
@@ -33,9 +33,9 @@
                            placeholder="Enter your name"
                            value="{{ old('name') }}"
                            style="font-size: 14px; border-color: #eee;">
-                    @error('name')
-                        <div class="invalid-feedback small">{{ $message }}</div>
-                    @enderror
+                   <div class="invalid-feedback d-block" style="min-height: 20px;">
+                        @error('name') {{ $message }} @enderror
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label small fw-bold text-muted">Email Address</label>
@@ -46,9 +46,9 @@
                            placeholder="name@example.com"
                            value="{{ old('email') }}"
                            style="font-size: 14px; border-color: #eee;">
-                    @error('email')
-                        <div class="invalid-feedback small">{{ $message }}</div>
-                    @enderror
+                     <div class="invalid-feedback d-block" style="min-height: 20px;">
+                        @error('email') {{ $message }} @enderror
+                    </div>
                 </div>
 
                 <div class="mb-4">
@@ -57,11 +57,10 @@
                         name="password"
                         class="form-control rounded-3 py-2 @error('password') is-invalid @enderror"
                         id="password"
-                        placeholder="••••••••"
                         style="font-size: 14px; border-color: #eee;">
-                    @error('password')
-                        <div class="invalid-feedback small">{{ $message }}</div>
-                    @enderror
+                     <div class="invalid-feedback d-block" style="min-height: 20px;">
+                        @error('password') {{ $message }} @enderror
+                    </div>
                 </div>
 
                 <div class="mb-4">

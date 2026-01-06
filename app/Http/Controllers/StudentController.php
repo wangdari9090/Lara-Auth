@@ -58,7 +58,7 @@ class StudentController extends Controller
 
         Student::create($request->all());
 
-        return redirect()->route('students.index')->with('success', 'Student added successfully.');
+        return redirect()->route('students.create')->with('success', 'Student added successfully.');
 
         }
 

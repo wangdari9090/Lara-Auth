@@ -14,7 +14,7 @@
 
             <div class="d-flex gap-2">
                 @guest
-                    <a href="{{ route('show.register') }}" class="btn btn-light btn-lg px-4 rounded-3 fw-bold" style="color: var(--main-color);">Get Started</a>
+                    <a href="#" class="btn btn-light btn-lg px-4 rounded-3 fw-bold" style="color: var(--main-color);">Get Started</a>
                     <a href="{{ route('show.login') }}" class="btn btn-outline-light btn-lg px-4 rounded-3">Login</a>
                 @endguest
 
@@ -33,7 +33,8 @@
         </div>
 
         <div class="col-md-5 text-center d-none d-md-block">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Education" class="img-fluid floating-animation" style="max-height: 280px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Education" class="img-fluid" style="max-height: 280px;">
+            {{-- <img src="{{ asset('images/students_09.jpg') }}" alt="Education" class="img-fluid" style="max-height: 500px;"> --}}
         </div>
     </div>
 </div>

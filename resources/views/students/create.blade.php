@@ -1,30 +1,38 @@
 @extends('layouts.admin_main')
 
 @section('content')
+{{-- Success Modal --}}
 @if(session('success'))
-    <div class="alert alert-success border-0 shadow-sm rounded-4 d-flex align-items-center mb-4" role="alert" style="background-color: #eef7e8; border-left: 5px solid #99CC00 !important;">
-        <i class="bi bi-check-circle-fill me-2" style="color: #99CC00;"></i>
-        <div class="fw-medium text-dark">
-            {{ session('success') }}
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm"> 
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-check-circle-fill" style="font-size: 2.5rem; color: var(--main-color);"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">Done!</h5>
+                    <p class="text-muted small mb-4">{{ session('success') }}</p>
+                    <button type="button" class="btn btn-sm rounded-pill px-4 text-white fw-bold shadow-sm" 
+                            style="background-color: var(--main-color);" 
+                            data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
         </div>
-        <button type="button" class="btn-close ms-auto shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modalEl = document.getElementById('successModal');
+            if (modalEl) {
+                var myModal = new bootstrap.Modal(modalEl);
+                myModal.show();
+            }
+        });
+    </script>
 @endif
 
-@if($errors->any())
-    <div class="alert alert-danger border-0 shadow-sm rounded-4 d-flex align-items-start mb-4" role="alert" style="background-color: #fff5f5; border-left: 5px solid #dc3545 !important;">
-        <i class="bi bi-exclamation-triangle-fill me-2 mt-1" style="color: #dc3545;"></i>
-        <div>
-            <div class="fw-bold text-dark mb-1">Please fix the following errors:</div>
-            <ul class="mb-0 ps-3 small text-secondary">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <button type="button" class="btn-close ms-auto shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
 <div class="container-fluid mt-4 pb-5"  >
     <div class="mx-auto col-12 col-lg-9">
         
@@ -47,7 +55,7 @@
                         <label class="small text-muted fw-bold mb-1">Student Name</label>
                         <div class="sms-create-group @error('student_name') border-danger @enderror">
                             <i class="bi bi-person"></i>
-                            <input type="text" name="student_name" class="create-form-input" placeholder="John Doe" value="{{ old('student_name') }}" required>
+                            <input type="text" name="student_name" class="create-form-input" placeholder="John Doe" value="{{ old('student_name') }}">
                         </div>
                         @error('student_name') <span class="text-danger extra-small">{{ $message }}</span> @enderror
                     </div>
@@ -55,17 +63,17 @@
                         <label class="small text-muted fw-bold mb-1">Student Code</label>
                         <div class="sms-create-group @error('student_code') border-danger @enderror">
                             <i class="bi bi-card-text"></i>
-                            <input type="text" name="student_code" class="create-form-input"  required>
+                            <input type="text" name="student_code" class="create-form-input" >
                         </div>
                         @error('student_code') <span class="text-danger extra-small">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="row g-3">
-                        <div class="col-sm-12 col-md-6">
-                            <label class="small text-muted fw-bold mb-1">Course</label>
+                        <label class="small text-muted fw-bold">Course</label>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="sms-create-group @error('course') border-danger @enderror">
-                                <i class="bi bi-book"></i> <select name="course" class="create-form-input border-0 bg-transparent w-100 shadow-none" style="outline: none;" required>
-                                    <option value="" selected disabled>Select Course</option>
+                                <i class="bi bi-book"></i> <select name="course" class="create-form-input border-0 bg-transparent w-100 shadow-none" style="outline: none;">
+                                    <option value="" selected disabled>Select User</option>
                                     <option value="PHP Laravel" {{ old('course') == 'PHP Laravel' ? 'selected' : '' }}>PHP Laravel</option>
                                     <option value="Web Design" {{ old('course') == 'Web Design' ? 'selected' : '' }}>Web Design</option>
                                     <option value="Python Data Science" {{ old('course') == 'Python Data Science' ? 'selected' : '' }}>Python Data Science</option>
@@ -74,12 +82,11 @@
                             @error('course') <span class="text-danger extra-small">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="col-sm-12 col-md-6">
-                            <label class="small text-muted fw-bold mb-1">Branch Name</label>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="sms-create-group @error('branch_name') border-danger @enderror">
                                 <i class="bi bi-geo-alt"></i>
-                                <select name="branch_name" class="create-form-input border-0 bg-transparent w-100 shadow-none" style="outline: none;" required>
-                                    <option value="" selected disabled>Select Branch</option>
+                                <select name="branch_name" class="create-form-input border-0 bg-transparent w-100 shadow-none" style="outline: none;">
+                                    <option value="" selected disabled>Select Courses</option>
                                     <option value="Main Branch" {{ old('branch_name') == 'Main Branch' ? 'selected' : '' }}>Main Branch</option>
                                     <option value="City Center" {{ old('branch_name') == 'City Center' ? 'selected' : '' }}>City Center</option>
                                     <option value="ygn" {{ old('branch_name') == 'ygn' ? 'selected' : '' }}>YGN</option>

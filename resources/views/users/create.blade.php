@@ -1,6 +1,38 @@
 @extends('layouts.admin_main')
 
 @section('content')
+
+{{-- Success Modal --}}
+@if(session('success'))
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm"> 
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-check-circle-fill" style="font-size: 2.5rem; color: var(--main-color);"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">Done!</h5>
+                    <p class="text-muted small mb-4">{{ session('success') }}</p>
+                    <button type="button" class="btn btn-sm rounded-pill px-4 text-white fw-bold shadow-sm" 
+                            style="background-color: var(--main-color);" 
+                            data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modalEl = document.getElementById('successModal');
+            if (modalEl) {
+                var myModal = new bootstrap.Modal(modalEl);
+                myModal.show();
+            }
+        });
+    </script>
+@endif
 <div class="container-fluid py-4">
     <div class="mb-4">
         <a href="{{ route('users.index') }}" class="text-decoration-none text-muted small d-flex align-items-center">

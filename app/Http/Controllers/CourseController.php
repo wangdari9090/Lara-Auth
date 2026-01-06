@@ -10,6 +10,7 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
   public function index(Request $request)
     {
         $query = Course::query();
@@ -21,8 +22,9 @@ class CourseController extends Controller
             });
         }
         if ($request->filled('branch')) {
-            $query->where('branch_name', $request->branch);
-        }
+    $branchValue = trim($request->branch);
+    $query->where('branch_name', 'LIKE', $branchValue);
+}
         if ($request->filled('department')) {
             $query->where('department', $request->department);
         }
@@ -48,8 +50,8 @@ class CourseController extends Controller
     {
         $request->validate([
             'name'       => 'required|string|max:255',
-            'course_title' => 'nullable|string',
-            'description' => 'nullable|string',
+            'course_title' => 'required|string',
+            'description' => 'required|string',
             'branch_name' => 'required|string',
         ]);
 
@@ -61,7 +63,7 @@ class CourseController extends Controller
             'is_active'   => $request->has('is_active') ? true : false,
         ]);
 
-        return redirect()->route('courses.index')->with('success', 'Course created successfully.');
+        return redirect()->route('courses.create')->with('success', 'Course created successfully.');
     }
 
     /**
@@ -84,7 +86,6 @@ class CourseController extends Controller
             'course_title'  => 'required|string|max:255',
             'description'    => 'required|string|max:255',
             'branch_name'   => 'required|string|max:255',
-            'description'   => 'nullable|string',
         ]);
 
         $course->name         = $request->name;

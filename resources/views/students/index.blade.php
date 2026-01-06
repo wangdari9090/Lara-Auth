@@ -10,7 +10,9 @@
             
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                 <div>
-                    <h3 class="fw-bold mb-1">Student Directory</h3>
+                   <a href="{{ route('students.index') }}" class="text-decoration-none">
+                    <h3 class="fw-bold mb-1" style="color: #2d3436;">Student Directory</h3>
+                </a>    
                     <p class="text-muted small mb-0">List of currently enrolled students</p>
                 </div>
 
@@ -56,7 +58,7 @@
 </div>
             <div class="rounded overflow-hidden">
                 <div class="table-responsive">
-                    <table class="table align-middle mb-0 student-table">
+                    <table class="table table-hover align-middle mb-0">
                         <thead>
                             <tr>
                                 <th class="ps-4">ID</th>
@@ -75,14 +77,12 @@
                                     </span>
                                 </td>
                                 <td class="ps-4">
-                                    <span class="d-flex align-items-center">
-                                        {{ $student->student_code }}
-                                    </span>
+                                    <span class="text-secondary" style="font-size: 14px;">{{ $student->student_code }}</span>
                                 </td>
 
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <span class="fw-bold text-dark">{{ $student->student_name }}</span>
+                                       <span class="text-secondary" style="font-size: 14px;">{{ $student->student_name }}</span>
                                     </div>
                                 </td>
 
@@ -95,7 +95,7 @@
                                 <td class="text-end pe-4">
                                     <div class="d-flex justify-content-end gap-2">
                                         <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-light rounded-pill px-3 border shadow-none" title="Edit">
-                                            <i class="bi bi-pencil-square text-primary me-1"></i>
+                                            <i class="bi bi-pencil-square me-1" style="color: var(--main-color);"></i>
                                         </a>
                                         
                                         <form action="{{ route('students.destroy', $student->id) }}" method="POST" onsubmit="return confirm('Delete this record?')">
@@ -109,7 +109,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="4" class="text-center py-5 text-muted">
+                                <td colspan="5" class="text-center py-5 text-muted">
                                     <i class="bi bi-inbox fs-1 d-block mb-2 opacity-25"></i>
                                     No students found.
                                 </td>

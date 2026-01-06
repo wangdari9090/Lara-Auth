@@ -6,6 +6,22 @@
     <title>@yield('title', 'Admin Panel')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+<style>
+    /* 1. Ensure the main content area doesn't clip dropdowns */
+    #main-content, .container-fluid, .card {
+        overflow: visible !important;
+    }
+
+    /* 2. Force the dropdown menu to high z-index */
+    .dropdown-menu {
+        z-index: 2000 !important;
+    }
+    
+    /* 3. Fix table responsiveness clipping */
+    .table-responsive {
+        overflow: visible !important;
+    }
+</style>
 <body style="background-color: var(--bg-light)">
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top border-bottom bg-white shadow-sm" style="height: 58px; z-index: 1040;">
@@ -33,6 +49,7 @@
             </div>
         </main>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

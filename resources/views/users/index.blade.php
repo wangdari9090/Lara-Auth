@@ -3,7 +3,9 @@
 @section('content')
 <div class="container-fluid py-4 col-lg-10">
     <div class="mb-4">
-        <h2 class="fw-bold text-dark mt-2">User Table</h2>
+        <a href="{{ route('users.index') }}" class="text-decoration-none">
+                    <h3 class="fw-bold mb-1" style="color: #2d3436;">User Table</h3>
+        </a>   
     </div>
  <div class="d-flex align-items-center gap-2">
     <form action="{{ route('users.index') }}" method="GET" autocomplete="off" class="d-none d-md-flex mb-0">
@@ -46,7 +48,7 @@
                             <span class="badge bg-light text-theme border border-primary-subtle rounded-pill px-3 fw-medium">{{ $user->id }}</span>
                         </td>
                         <td>
-                            <span class="fw-bold text-dark">{{ $user->name }}</span>
+                            <span class="text-secondary" style="font-size: 14px;">{{ $user->name }}</span>
                         </td>
                         <td>
                             <span class="text-secondary" style="font-size: 14px;">{{ $user->email }}</span>
